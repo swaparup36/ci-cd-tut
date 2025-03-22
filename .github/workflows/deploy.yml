@@ -21,4 +21,10 @@ jobs:
           username: ubuntu
           password: ${{ secrets.PRIVATE_SSH_KEY }}
           port: 22
-          script: ls
+          script: |
+            ls
+            cd ci-cd-tut/
+            git pull
+            npm install
+            npm run build
+            pm2 run start
